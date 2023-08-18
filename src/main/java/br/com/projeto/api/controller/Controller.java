@@ -28,6 +28,11 @@ public class Controller {
     return action.findAll();
   }
 
+  @GetMapping("/api/{id}")
+  public Person selectById(@PathVariable int id){
+    return action.findById(id);
+  }
+
   @GetMapping("/message")
   public String message() {
     return "Hello World!";
