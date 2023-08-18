@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -31,6 +32,11 @@ public class Controller {
   @GetMapping("/api/{id}")
   public Person selectById(@PathVariable int id){
     return action.findById(id);
+  }
+
+  @PutMapping("/api")
+  public Person edit(@RequestBody Person obj){
+    return action.save(obj);
   }
 
   @GetMapping("/message")
