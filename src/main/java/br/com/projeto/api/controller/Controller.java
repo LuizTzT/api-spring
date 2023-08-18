@@ -16,6 +16,11 @@ public class Controller {
   @Autowired
   private RepositoryCrud action;
 
+  @PostMapping("/api")
+  public Person register(@RequestBody Person obj){
+    return action.save(obj);
+  }
+
   @GetMapping("/message")
   public String message() {
     return "Hello World!";
