@@ -68,6 +68,16 @@ public class Controller {
     return action.findByNameContaining("br");
   }
 
+  @GetMapping("/api/starts")
+  public List<Person> nameStartsWith(String term){
+    return action.findByNameStartsWith("re");
+  }
+
+  @GetMapping("/api/ends")
+  public List<Person> nameEndsWith(String term){
+    return action.findByNameEndsWith("o");
+  }
+
   @GetMapping("/message")
   public String message() {
     return "Hello World!";
