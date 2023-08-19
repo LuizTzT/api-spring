@@ -14,5 +14,6 @@ public interface RepositoryCrud extends CrudRepository<Person, Integer>{
   Person findById(int id);
   List<Person> findByOrderByName();
   List<Person> findByNameOrderByAgeDesc(String name);
+  List<Person> findByNameContaining(String term);
 
 }
