@@ -46,6 +46,13 @@ public class Controller {
     action.delete(personObj);
   }
 
+  @GetMapping("/api/count")
+  public String countPeople(){
+    long count = action.count();
+    String formatted = String.format("%d elements.", count);
+    return formatted;
+  }
+
   @GetMapping("/message")
   public String message() {
     return "Hello World!";
