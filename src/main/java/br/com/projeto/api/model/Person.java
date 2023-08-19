@@ -15,6 +15,6 @@ public class Person {
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   private int id;
-  private String nome;
-  private int idade;
+  private String name;
+  private int age;
 }
