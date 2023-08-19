@@ -63,6 +63,11 @@ public class Controller {
     return action.findByNameOrderByAgeDesc("Renata");
   }
 
+  @GetMapping("/api/containing")
+  public List<Person> findByNameContaining(String term){
+    return action.findByNameContaining("br");
+  }
+
   @GetMapping("/message")
   public String message() {
     return "Hello World!";
