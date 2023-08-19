@@ -53,6 +53,11 @@ public class Controller {
     return formatted;
   }
 
+  @GetMapping("/api/orderByName")
+  public List<Person> OrderByName(){
+    return action.findByOrderByName();
+  }
+
   @GetMapping("/message")
   public String message() {
     return "Hello World!";
