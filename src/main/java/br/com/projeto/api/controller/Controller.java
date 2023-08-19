@@ -58,6 +58,11 @@ public class Controller {
     return action.findByOrderByName();
   }
 
+  @GetMapping("/api/orderByAgeDesc")
+  public List<Person> findByNameOrderByAgeDesc(String name){
+    return action.findByNameOrderByAgeDesc("Renata");
+  }
+
   @GetMapping("/message")
   public String message() {
     return "Hello World!";
