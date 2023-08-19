@@ -54,7 +54,7 @@ public class Controller {
   }
 
   @GetMapping("/api/orderByName")
-  public List<Person> OrderByName(){
+  public List<Person> orderByName(){
     return action.findByOrderByName();
   }
 
