@@ -3,6 +3,7 @@ package br.com.projeto.api.controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -13,6 +14,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import br.com.projeto.api.model.Person;
 import br.com.projeto.api.repository.RepositoryCrud;
+import br.com.projeto.api.service.ServiceCrud;
 
 @RestController
 public class Controller {
@@ -20,9 +22,12 @@ public class Controller {
   @Autowired
   private RepositoryCrud action;
 
+  @Autowired
+  private ServiceCrud service;
+
   @PostMapping("/api")
-  public Person register(@RequestBody Person obj){
-    return action.save(obj);
+  public ResponseEntity<?> register(@RequestBody Person obj){
+    return service.register(obj);
   }
 
   @GetMapping("/api")
