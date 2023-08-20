@@ -28,4 +28,6 @@ public interface RepositoryCrud extends CrudRepository<Person, Integer> {
   @Query(value = "SELECT SUM(age) FROM people", nativeQuery = true)
   int sumAges();
 
+  @Query(value = "SELECT * FROM people WHERE age >= :age", nativeQuery = true)
+  List<Person> equalOrHigher(int age);
 }
