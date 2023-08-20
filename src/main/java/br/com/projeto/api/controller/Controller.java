@@ -78,6 +78,11 @@ public class Controller {
     return action.findByNameEndsWith("o");
   }
 
+  @GetMapping("/api/sumAges")
+  public int sumAges(){
+    return action.sumAges();
+  }
+
   @GetMapping("/message")
   public String message() {
     return "Hello World!";
