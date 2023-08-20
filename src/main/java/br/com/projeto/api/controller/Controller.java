@@ -64,23 +64,28 @@ public class Controller {
   }
 
   @GetMapping("/api/containing")
-  public List<Person> findByNameContaining(String term){
+  public List<Person> findByNameContaining(){
     return action.findByNameContaining("br");
   }
 
   @GetMapping("/api/starts")
-  public List<Person> nameStartsWith(String term){
+  public List<Person> nameStartsWith(){
     return action.findByNameStartsWith("re");
   }
 
   @GetMapping("/api/ends")
-  public List<Person> nameEndsWith(String term){
+  public List<Person> nameEndsWith(){
     return action.findByNameEndsWith("o");
   }
 
   @GetMapping("/api/sumAges")
   public int sumAges(){
     return action.sumAges();
+  }
+
+  @GetMapping("/api/equalOrHigher")
+  public List<Person> equalOrHigher(){
+    return action.equalOrHigher(30);
   }
 
   @GetMapping("/message")
