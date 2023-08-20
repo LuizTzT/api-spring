@@ -34,4 +34,13 @@ public class ServiceCrud {
     return new ResponseEntity<>(action.findAll(), HttpStatus.OK);
   }
 
+  public ResponseEntity<?> selectById(int id){
+    if(action.countById(id) == 0){
+      message.setMessage("Nenhuma pessoa encontrada.");
+      return new ResponseEntity<>(message, HttpStatus.BAD_REQUEST);
+    }else{
+      return new ResponseEntity<>(action.findById(id), HttpStatus.OK);
+    }
+  }
+
 }
