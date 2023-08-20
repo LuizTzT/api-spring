@@ -31,8 +31,8 @@ public class Controller {
   }
 
   @GetMapping("/api")
-  public List<Person> selectAll(){
-    return action.findAll();
+  public ResponseEntity<?> selectAll(){
+    return service.selectAll();
   }
 
   @GetMapping("/api/{id}")
