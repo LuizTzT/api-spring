@@ -30,4 +30,8 @@ public class ServiceCrud {
     }
   }
 
+  public ResponseEntity<?> selectAll() {
+    return new ResponseEntity<>(action.findAll(), HttpStatus.OK);
+  }
+
 }
