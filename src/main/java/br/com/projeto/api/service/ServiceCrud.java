@@ -5,6 +5,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
+import br.com.projeto.api.model.CustomResponse;
 import br.com.projeto.api.model.Message;
 import br.com.projeto.api.model.Person;
 import br.com.projeto.api.repository.RepositoryCrud;
@@ -17,6 +18,9 @@ public class ServiceCrud {
 
   @Autowired
   private RepositoryCrud action;
+
+  @Autowired
+  private CustomResponse customResponse;
 
   public ResponseEntity<?> register(Person obj) {
     if (obj.getName().equals("")) {
@@ -56,6 +60,20 @@ public class ServiceCrud {
       }
     }
     message.setMessage("Pessoa não encontrada.");
+    return new ResponseEntity<>(message, HttpStatus.NOT_FOUND);
+  }
+
+  public ResponseEntity<?> delete(int id) {
+    Person personObj = action.findById(id);
+    if (personObj != null) {
+      action.delete(personObj);
+
+      customResponse.setMessage("Pessoa removida com sucesso.");
+      customResponse.setPerson(personObj);
+
+      return new ResponseEntity<>(customResponse, HttpStatus.OK);
+    }
+    message.setMessage("Pessoa não encontrada");
     return new ResponseEntity<>(message, HttpStatus.NOT_FOUND);
   }
 
