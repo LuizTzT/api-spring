@@ -34,13 +34,29 @@ public class ServiceCrud {
     return new ResponseEntity<>(action.findAll(), HttpStatus.OK);
   }
 
-  public ResponseEntity<?> selectById(int id){
-    if(action.countById(id) == 0){
+  public ResponseEntity<?> selectById(int id) {
+    if (action.countById(id) == 0) {
       message.setMessage("Nenhuma pessoa encontrada.");
       return new ResponseEntity<>(message, HttpStatus.BAD_REQUEST);
-    }else{
+    } else {
       return new ResponseEntity<>(action.findById(id), HttpStatus.OK);
     }
+  }
+
+  public ResponseEntity<?> edit(Person obj) {
+    if (action.findById(obj.getId()) != null) {
+      if (obj.getName().equals("")) {
+        message.setMessage("Nome vazio.");
+        return new ResponseEntity<>(message, HttpStatus.BAD_REQUEST);
+      } else if (obj.getAge() < 0) {
+        message.setMessage("Idade menor que zero.");
+        return new ResponseEntity<>(message, HttpStatus.BAD_REQUEST);
+      } else {
+        return new ResponseEntity<>(action.save(obj), HttpStatus.OK);
+      }
+    }
+    message.setMessage("Pessoa não encontrada.");
+    return new ResponseEntity<>(message, HttpStatus.NOT_FOUND);
   }
 
 }
