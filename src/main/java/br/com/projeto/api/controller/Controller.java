@@ -41,8 +41,8 @@ public class Controller {
   }
 
   @PutMapping("/api")
-  public Person edit(@RequestBody Person obj){
-    return action.save(obj);
+  public ResponseEntity<?> edit(@RequestBody Person obj){
+    return service.edit(obj);
   }
 
   @DeleteMapping("/api/{id}")
