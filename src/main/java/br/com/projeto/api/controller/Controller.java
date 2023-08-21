@@ -46,9 +46,8 @@ public class Controller {
   }
 
   @DeleteMapping("/api/{id}")
-  public void delete(@PathVariable int id){
-    Person personObj = selectById(id);
-    action.delete(personObj);
+  public ResponseEntity<?> delete(@PathVariable int id){
+    return service.delete(id);
   }
 
   @GetMapping("/api/count")
