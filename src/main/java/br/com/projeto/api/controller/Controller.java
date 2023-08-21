@@ -12,9 +12,11 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import br.com.projeto.api.model.Client;
 import br.com.projeto.api.model.Person;
 import br.com.projeto.api.repository.RepositoryCrud;
 import br.com.projeto.api.service.ServiceCrud;
+import jakarta.validation.Valid;
 
 @RestController
 public class Controller {
@@ -105,5 +107,10 @@ public class Controller {
   @PostMapping("/pessoa")
   public Person person(@RequestBody Person p){
     return p;
+  }
+
+  @PostMapping("/client")
+  public void client(@Valid @RequestBody Client client){
+
   }
 }
